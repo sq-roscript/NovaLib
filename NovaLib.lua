@@ -20,6 +20,111 @@ NovaLib.Themes = {
 		Error        = Color3.fromRGB(239, 68, 68),
 		ToggleOff    = Color3.fromRGB(45, 46, 61),
 	},
+	Midnight = {
+		Background   = Color3.fromRGB(10, 10, 15),
+		Topbar       = Color3.fromRGB(14, 14, 20),
+		Sidebar      = Color3.fromRGB(12, 12, 18),
+		Element      = Color3.fromRGB(18, 18, 26),
+		ElementHover = Color3.fromRGB(26, 26, 36),
+		Accent       = Color3.fromRGB(88, 101, 242),
+		Accent2      = Color3.fromRGB(0, 201, 255),
+		Text         = Color3.fromRGB(255, 255, 255),
+		SubText      = Color3.fromRGB(130, 132, 150),
+		Stroke       = Color3.fromRGB(30, 30, 42),
+		Success      = Color3.fromRGB(34, 197, 94),
+		Error        = Color3.fromRGB(239, 68, 68),
+		ToggleOff    = Color3.fromRGB(40, 40, 55),
+	},
+	Crimson = {
+		Background   = Color3.fromRGB(20, 12, 14),
+		Topbar       = Color3.fromRGB(26, 15, 18),
+		Sidebar      = Color3.fromRGB(23, 13, 16),
+		Element      = Color3.fromRGB(30, 18, 21),
+		ElementHover = Color3.fromRGB(40, 24, 28),
+		Accent       = Color3.fromRGB(239, 68, 68),
+		Accent2      = Color3.fromRGB(249, 115, 22),
+		Text         = Color3.fromRGB(255, 240, 240),
+		SubText      = Color3.fromRGB(170, 135, 140),
+		Stroke       = Color3.fromRGB(55, 30, 35),
+		Success      = Color3.fromRGB(34, 197, 94),
+		Error        = Color3.fromRGB(239, 68, 68),
+		ToggleOff    = Color3.fromRGB(50, 32, 36),
+	},
+	Emerald = {
+		Background   = Color3.fromRGB(10, 20, 16),
+		Topbar       = Color3.fromRGB(13, 26, 21),
+		Sidebar      = Color3.fromRGB(11, 23, 18),
+		Element      = Color3.fromRGB(17, 32, 26),
+		ElementHover = Color3.fromRGB(23, 42, 34),
+		Accent       = Color3.fromRGB(16, 185, 129),
+		Accent2      = Color3.fromRGB(34, 211, 238),
+		Text         = Color3.fromRGB(235, 255, 245),
+		SubText      = Color3.fromRGB(130, 160, 145),
+		Stroke       = Color3.fromRGB(28, 52, 42),
+		Success      = Color3.fromRGB(34, 197, 94),
+		Error        = Color3.fromRGB(239, 68, 68),
+		ToggleOff    = Color3.fromRGB(30, 50, 42),
+	},
+	Ocean = {
+		Background   = Color3.fromRGB(11, 18, 28),
+		Topbar       = Color3.fromRGB(14, 24, 36),
+		Sidebar      = Color3.fromRGB(12, 21, 32),
+		Element      = Color3.fromRGB(18, 30, 44),
+		ElementHover = Color3.fromRGB(24, 40, 58),
+		Accent       = Color3.fromRGB(14, 165, 233),
+		Accent2      = Color3.fromRGB(99, 102, 241),
+		Text         = Color3.fromRGB(230, 245, 255),
+		SubText      = Color3.fromRGB(125, 150, 175),
+		Stroke       = Color3.fromRGB(30, 50, 70),
+		Success      = Color3.fromRGB(34, 197, 94),
+		Error        = Color3.fromRGB(239, 68, 68),
+		ToggleOff    = Color3.fromRGB(32, 48, 64),
+	},
+	Sunset = {
+		Background   = Color3.fromRGB(22, 15, 20),
+		Topbar       = Color3.fromRGB(28, 19, 26),
+		Sidebar      = Color3.fromRGB(25, 17, 23),
+		Element      = Color3.fromRGB(34, 23, 31),
+		ElementHover = Color3.fromRGB(45, 30, 41),
+		Accent       = Color3.fromRGB(249, 115, 22),
+		Accent2      = Color3.fromRGB(236, 72, 153),
+		Text         = Color3.fromRGB(255, 242, 235),
+		SubText      = Color3.fromRGB(175, 140, 150),
+		Stroke       = Color3.fromRGB(60, 35, 45),
+		Success      = Color3.fromRGB(34, 197, 94),
+		Error        = Color3.fromRGB(239, 68, 68),
+		ToggleOff    = Color3.fromRGB(55, 35, 45),
+	},
+	Light = {
+		Background   = Color3.fromRGB(242, 243, 247),
+		Topbar       = Color3.fromRGB(255, 255, 255),
+		Sidebar      = Color3.fromRGB(235, 236, 241),
+		Element      = Color3.fromRGB(255, 255, 255),
+		ElementHover = Color3.fromRGB(228, 230, 238),
+		Accent       = Color3.fromRGB(99, 102, 241),
+		Accent2      = Color3.fromRGB(168, 85, 247),
+		Text         = Color3.fromRGB(20, 22, 35),
+		SubText      = Color3.fromRGB(110, 114, 135),
+		Stroke       = Color3.fromRGB(210, 213, 225),
+		Success      = Color3.fromRGB(22, 163, 74),
+		Error        = Color3.fromRGB(220, 38, 38),
+		ToggleOff    = Color3.fromRGB(200, 203, 215),
+	},
+	Cyber = {
+		Background   = Color3.fromRGB(8, 12, 10),
+		Topbar       = Color3.fromRGB(10, 16, 13),
+		Sidebar      = Color3.fromRGB(9, 14, 11),
+		Element      = Color3.fromRGB(14, 22, 18),
+		ElementHover = Color3.fromRGB(20, 32, 26),
+		Accent       = Color3.fromRGB(0, 255, 170),
+		Accent2      = Color3.fromRGB(0, 255, 255),
+		Text         = Color3.fromRGB(220, 255, 240),
+		SubText      = Color3.fromRGB(110, 160, 140),
+		Stroke       = Color3.fromRGB(25, 55, 42),
+		Success      = Color3.fromRGB(0, 255, 170),
+		Error        = Color3.fromRGB(255, 60, 90),
+		ToggleOff    = Color3.fromRGB(25, 45, 38),
+	},
 }
 
 local TweenService = game:GetService("TweenService")
@@ -104,6 +209,27 @@ local function safeCallback(fn, ...)
 			warn("[NovaLib] Callback error: " .. tostring(err))
 		end
 	end)
+end
+
+--// Theme Helpers (für Settings: Open-Keybind + Themes live wechseln)
+local function cloneTheme(t)
+	local n = {}
+	for k, v in pairs(t) do n[k] = v end
+	return n
+end
+
+function NovaLib.GetThemeNames()
+	local names = {}
+	for name, _ in pairs(NovaLib.Themes) do
+		table.insert(names, name)
+	end
+	table.sort(names)
+	return names
+end
+
+local function colorsMatch(a, b)
+	if typeof(a) ~= "Color3" or typeof(b) ~= "Color3" then return false end
+	return math.abs(a.R - b.R) < 0.004 and math.abs(a.G - b.G) < 0.004 and math.abs(a.B - b.B) < 0.004
 end
 
 --// NOTIFY SYSTEM (global, works without window too)
@@ -238,11 +364,16 @@ end
 --// MAIN WINDOW
 function NovaLib.CreateWindow(cfg)
 	cfg = cfg or {}
-	local theme = NovaLib.Themes.Default
+	-- Theme kopieren (pro Window), damit live-switch andere Windows nicht kaputt macht
+	local theme = cloneTheme(NovaLib.Themes.Default)
+	if cfg.ThemeName and NovaLib.Themes[cfg.ThemeName] then
+		theme = cloneTheme(NovaLib.Themes[cfg.ThemeName])
+	end
 	if cfg.Theme then
 		for k, v in pairs(cfg.Theme) do theme[k] = v end
 	end
 	if cfg.Accent then theme.Accent = cfg.Accent end
+	if cfg.Accent2 then theme.Accent2 = cfg.Accent2 end
 
 	local winName = cfg.Name or "NovaLib"
 	local subTitle = cfg.SubTitle or cfg.Sub or "v1.0"
@@ -473,6 +604,7 @@ function NovaLib.CreateWindow(cfg)
 	Window.Minimized = false
 	Window.Tabs = {}
 	Window.CurrentTab = nil
+	Window.CurrentThemeName = cfg.ThemeName or "Default"
 
 	function Window:SetLogo(id)
 		logoId = id
@@ -510,6 +642,178 @@ function NovaLib.CreateWindow(cfg)
 		tween(main, {Size = UDim2.new(0, 520, 0, 0)}, TWEEN_FAST)
 		task.wait(0.15)
 		pcall(function() gui:Destroy() end)
+	end
+
+	--// SETTINGS: Open-Keybind + Theme live wechseln
+	function Window:GetOpenKeybind()
+		return toggleKey
+	end
+
+	function Window:SetOpenKeybind(key)
+		if typeof(key) == "EnumItem" then
+			toggleKey = key
+			if Window._openKeyBtn then
+				pcall(function() Window._openKeyBtn:Set(key) end)
+			end
+			Window:Notify({Title = "Keybind", Description = "Open-Key ist jetzt: " .. key.Name, Type = "Info", Duration = 2})
+		end
+	end
+
+	local function applyThemeLive(oldTheme, newTheme)
+		if not gui or not gui.Parent then return end
+		-- alle Background/Text/Stroke Farben ersetzen, die zum alten Theme passen
+		for _, obj in ipairs(gui:GetDescendants()) do
+			pcall(function()
+				if obj:IsA("Frame") or obj:IsA("TextButton") or obj:IsA("TextBox") or obj:IsA("ImageLabel") or obj:IsA("ScrollingFrame") then
+					for k, oldCol in pairs(oldTheme) do
+						if typeof(oldCol) == "Color3" and newTheme[k] then
+							if colorsMatch(obj.BackgroundColor3, oldCol) then
+								tween(obj, {BackgroundColor3 = newTheme[k]}, TWEEN_FAST)
+								break
+							end
+						end
+					end
+				end
+				if obj:IsA("TextLabel") or obj:IsA("TextButton") or obj:IsA("TextBox") then
+					for k, oldCol in pairs(oldTheme) do
+						if typeof(oldCol) == "Color3" and newTheme[k] then
+							-- nur Text-Farben mappen (Text, SubText, Accent)
+							if (k == "Text" or k == "SubText" or k == "Accent") and colorsMatch(obj.TextColor3, oldCol) then
+								tween(obj, {TextColor3 = newTheme[k]}, TWEEN_FAST)
+								break
+							end
+						end
+					end
+					-- Placeholder separat
+					if obj:IsA("TextBox") then
+						for k, oldCol in pairs(oldTheme) do
+							if k == "SubText" and colorsMatch(obj.PlaceholderColor3, oldCol) then
+								obj.PlaceholderColor3 = newTheme[k]
+								break
+							end
+						end
+					end
+				end
+				if obj:IsA("UIStroke") then
+					for k, oldCol in pairs(oldTheme) do
+						if typeof(oldCol) == "Color3" and newTheme[k] then
+							if (k == "Stroke" or k == "Accent") and colorsMatch(obj.Color, oldCol) then
+								tween(obj, {Color = newTheme[k]}, TWEEN_FAST)
+								break
+							end
+						end
+					end
+				end
+				if obj:IsA("ScrollingFrame") then
+					if colorsMatch(obj.ScrollBarImageColor3, oldTheme.Stroke) then
+						obj.ScrollBarImageColor3 = newTheme.Stroke
+					end
+				end
+				if obj:IsA("UIGradient") then
+					local seq = obj.Color
+					if seq and #seq.Keypoints == 2 then
+						local c1, c2 = seq.Keypoints[1].Value, seq.Keypoints[2].Value
+						if colorsMatch(c1, oldTheme.Accent) and colorsMatch(c2, oldTheme.Accent2) then
+							tween(obj, {Color = ColorSequence.new({
+								ColorSequenceKeypoint.new(0, newTheme.Accent),
+								ColorSequenceKeypoint.new(1, newTheme.Accent2),
+							})}, TWEEN_FAST)
+						end
+					end
+				end
+			end)
+		end
+	end
+
+	function Window:SetTheme(nameOrTable)
+		local newT
+		if type(nameOrTable) == "string" then
+			if not NovaLib.Themes[nameOrTable] then
+				warn("[NovaLib] Theme nicht gefunden: " .. tostring(nameOrTable))
+				return
+			end
+			newT = cloneTheme(NovaLib.Themes[nameOrTable])
+			Window.CurrentThemeName = nameOrTable
+		elseif type(nameOrTable) == "table" then
+			newT = cloneTheme(nameOrTable)
+		else
+			return
+		end
+		local oldT = cloneTheme(theme)
+		for k, v in pairs(newT) do theme[k] = v end
+		Window.Theme = theme
+		task.spawn(applyThemeLive, oldT, theme)
+		Window:Notify({Title = "Theme", Description = "Theme: " .. tostring(Window.CurrentThemeName or "Custom"), Type = "Success", Duration = 2})
+	end
+
+	function Window:GetTheme()
+		return cloneTheme(theme)
+	end
+
+	function Window:SetAccent(color, color2)
+		if typeof(color) ~= "Color3" then return end
+		local oldT = cloneTheme(theme)
+		theme.Accent = color
+		if typeof(color2) == "Color3" then theme.Accent2 = color2 end
+		task.spawn(applyThemeLive, oldT, theme)
+	end
+
+	-- Fertiger Settings-Tab mit 1 Call: Open-Keybind + Theme-Dropdown + Accent-Picker
+	-- Nutzung: Window:CreateSettingsTab() oder Window:CreateSettingsTab({Name="Settings"})
+	function Window:CreateSettingsTab(scfg)
+		scfg = scfg or {}
+		local tab = Window:CreateTab({Name = scfg.Name or "Settings"})
+
+		tab:CreateSection("Menu")
+
+		tab:CreateLabel({
+			Title = "UI Einstellungen",
+			Description = "Hier kannst du Open-Key und Theme ändern. Wird sofort übernommen.",
+		})
+
+		local kb = tab:CreateKeybind({
+			Name = "Open / Close Keybind",
+			Default = toggleKey,
+			Callback = function(k)
+				toggleKey = k
+				Window:Notify({Title = "Keybind gespeichert", Description = "Open-Key: " .. k.Name, Type = "Success", Duration = 2})
+			end,
+		})
+		Window._openKeyBtn = kb
+
+		local names = NovaLib.GetThemeNames()
+		local currentName = cfg.ThemeName or "Default"
+		-- falls Default nicht in Liste? ist immer drin
+		tab:CreateDropdown({
+			Name = "Theme",
+			Options = names,
+			Default = currentName,
+			Callback = function(v)
+				Window:SetTheme(v)
+			end,
+		})
+
+		tab:CreateColorPicker({
+			Name = "Accent Farbe (klick = nächste)",
+			Default = theme.Accent,
+			Callback = function(c)
+				Window:SetAccent(c)
+			end,
+		})
+
+		tab:CreateButton({
+			Name = "UI minimieren (zum Logo-Punkt)",
+			Callback = function()
+				Window:Minimize(true)
+			end,
+		})
+
+		tab:CreateLabel({
+			Title = "Tipp",
+			Description = "Drücke deinen Open-Key um die UI zu verstecken / zu zeigen.",
+		})
+
+		return tab
 	end
 
 	minBtn.MouseButton1Click:Connect(function() Window:Minimize(true) end)
@@ -1272,12 +1576,14 @@ local Window = NovaLib.CreateWindow({
 	Name = "Mein Hub",
 	SubTitle = "v1.0 | by Jason",
 	Logo = "rbxassetid://123456789", -- <-- DEIN LOGO HIER (Variable!)
-	Keybind = Enum.KeyCode.K, -- UI an/aus
-	Accent = Color3.fromRGB(99,102,241),
+	Keybind = Enum.KeyCode.K, -- UI an/aus (Start-Keybind, später in Settings änderbar)
+	ThemeName = "Default", -- Default, Midnight, Crimson, Emerald, Ocean, Sunset, Light, Cyber
+	-- Accent = Color3.fromRGB(99,102,241),
 })
 
 local MainTab = Window:CreateTab({Name = "Main"})
-local SettingsTab = Window:CreateTab({Name = "Settings"})
+-- NEU: Fertiger Settings-Tab mit Open-Keybind + Themes + Accent (1 Zeile!)
+local SettingsTab = Window:CreateSettingsTab({Name = "Settings"})
 
 MainTab:CreateSection("Player")
 
@@ -1330,6 +1636,13 @@ SettingsTab:CreateKeybind({
 	Default = Enum.KeyCode.F,
 	Callback = function(k) print(k) end
 })
+
+-- MANUELL (falls du eigenen Settings-Tab bauen willst):
+-- Window:SetTheme("Crimson") -- oder "Midnight","Emerald","Ocean","Sunset","Light","Cyber"
+-- Window:SetAccent(Color3.fromRGB(0,255,170))
+-- Window:SetOpenKeybind(Enum.KeyCode.H)
+-- print(Window:GetOpenKeybind(), Window.CurrentThemeName)
+-- print(table.concat(NovaLib.GetThemeNames(), ", "))
 
 Window:Notify({Title="NovaLib", Description="Loaded!", Type="Success"})
 

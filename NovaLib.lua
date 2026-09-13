@@ -388,7 +388,16 @@ function NovaLib.CreateWindow(cfg)
 		else parent = CoreGui end
 	end)
 	if not parent then
-		parent = LocalPlayer:WaitForChild("PlayerGui")
+		pcall(function()
+			if LocalPlayer then
+				parent = LocalPlayer:WaitForChild("PlayerGui")
+			else
+				parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+			end
+		end)
+	end
+	if not parent then
+		parent = CoreGui
 	end
 
 	local gui = Instance.new("ScreenGui")
@@ -592,9 +601,6 @@ function NovaLib.CreateWindow(cfg)
 
 	-- Open Animation
 	main.Size = UDim2.new(0, 520, 0, 340)
-	main.GroupTransparency = 1
-	-- GroupTransparency gibt es nur bei CanvasGroup, fallback:
-	pcall(function() main.GroupTransparency = nil end)
 	main.Visible = true
 	tween(main, {Size = UDim2.new(0, 580, 0, 380)}, TWEEN_SPRING)
 
@@ -774,6 +780,7 @@ function NovaLib.CreateWindow(cfg)
 		local kb = tab:CreateKeybind({
 			Name = "Open / Close Keybind",
 			Default = toggleKey,
+			FireOnPress = false, -- nur feuern wenn Key geändert wird, nicht bei jedem Öffnen
 			Callback = function(k)
 				toggleKey = k
 				Window:Notify({Title = "Keybind gespeichert", Description = "Open-Key: " .. k.Name, Type = "Success", Duration = 2})
@@ -796,6 +803,7 @@ function NovaLib.CreateWindow(cfg)
 		tab:CreateColorPicker({
 			Name = "Accent Farbe (klick = nächste)",
 			Default = theme.Accent,
+			FireOnStart = false, -- kein SetAccent beim Start
 			Callback = function(c)
 				Window:SetAccent(c)
 			end,
@@ -992,8 +1000,57 @@ function NovaLib.CreateWindow(cfg)
 			end
 			local api = {}
 			function api:Set(title, desc)
-				if title then t.Text = title end
-				if desc and d then d.Text = desc end
+				if title then
+					-- Chat-Verlauf kann sehr lang werden -> hinten kappen damit UI flüssig bleibt
+					local txt = tostring(title)
+					if #txt > 9000 then
+						txt = "...\n" .. string.sub(txt, #txt - 9000)
+					end
+					t.Text = txt
+				end
+				if desc ~= nil then
+					local dtxt = tostring(desc)
+					if #dtxt > 9000 then
+						dtxt = "...\n" .. string.sub(dtxt, #dtxt - 9000)
+					end
+					if d then
+						d.Text = dtxt
+					else
+						-- falls Label ohne Description erstellt wurde, jetzt nachträglich anlegen (für ChatDisplay wichtig)
+						d = Instance.new("TextLabel")
+						d.Size = UDim2.new(1, 0, 0, 14)
+						d.AutomaticSize = Enum.AutomaticSize.Y
+						d.BackgroundTransparency = 1
+						d.Font = Enum.Font.Gotham
+						d.TextSize = 12
+						d.TextXAlignment = Enum.TextXAlignment.Left
+						d.TextYAlignment = Enum.TextYAlignment.Top
+						d.TextColor3 = theme.SubText
+						d.TextWrapped = true
+						d.Text = dtxt
+						d.Parent = f
+						if not f:FindFirstChildOfClass("UIListLayout") then
+							local l2 = Instance.new("UIListLayout")
+							l2.Padding = UDim.new(0, 4)
+							l2.Parent = f
+						end
+					end
+				end
+				-- Auto-Scroll zum Ende (wichtig für AI-Chat Verlauf)
+				task.defer(function()
+					pcall(function()
+						local sc = page
+						if sc and sc:IsA("ScrollingFrame") then
+							-- warten bis AutomaticCanvasSize aktualisiert ist
+							task.wait()
+							sc.CanvasPosition = Vector2.new(0, math.max(0, sc.AbsoluteCanvasSize.Y - sc.AbsoluteWindowSize.Y))
+						end
+					end)
+				end)
+			end
+			function api:Get()
+				if d then return t.Text, d.Text end
+				return t.Text
 			end
 			return api
 		end
@@ -1471,6 +1528,13 @@ function NovaLib.CreateWindow(cfg)
 		function Tab:CreateKeybind(kcfg)
 			kcfg = kcfg or {}
 			local key = kcfg.Default or kcfg.Value or Enum.KeyCode.F
+			-- wenn string übergeben wird (z.B. aus Config), zu Enum auflösen
+			if type(key) == "string" then
+				pcall(function() key = Enum.KeyCode[key] end)
+				if type(key) == "string" then key = Enum.KeyCode.F end
+			end
+			local fireOnPress = kcfg.FireOnPress
+			if fireOnPress == nil then fireOnPress = true end
 			local f = baseContainer(44, false)
 			local l = Instance.new("TextLabel")
 			l.Size = UDim2.new(1, -90, 1, 0)
@@ -1507,12 +1571,19 @@ function NovaLib.CreateWindow(cfg)
 					key = input.KeyCode
 					kb.Text = key.Name
 					safeCallback(kcfg.Callback, key)
-				elseif not listening and input.KeyCode == key and not gpe then
+				elseif fireOnPress and not listening and input.KeyCode == key and not gpe then
 					safeCallback(kcfg.Callback, key)
 				end
 			end)
 			local api = {}
-			function api:Set(k) key = k kb.Text = k.Name end
+			function api:Set(k)
+				if type(k) == "string" then
+					pcall(function() k = Enum.KeyCode[k] end)
+				end
+				if typeof(k) == "EnumItem" then
+					key = k kb.Text = k.Name
+				end
+			end
 			function api:Get() return key end
 			return api
 		end
@@ -1554,9 +1625,15 @@ function NovaLib.CreateWindow(cfg)
 				safeCallback(ccfg.Callback, col)
 			end)
 			local api = {}
-			function api:Set(c) col = c tween(prev, {BackgroundColor3 = c}, TWEEN_FAST) end
+			function api:Set(c)
+				if typeof(c) == "Color3" then
+					col = c tween(prev, {BackgroundColor3 = c}, TWEEN_FAST)
+				end
+			end
 			function api:Get() return col end
-			task.defer(function() safeCallback(ccfg.Callback, col) end)
+			if ccfg.FireOnStart ~= false then
+				task.defer(function() safeCallback(ccfg.Callback, col) end)
+			end
 			return api
 		end
 

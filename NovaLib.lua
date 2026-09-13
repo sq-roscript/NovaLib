@@ -1057,6 +1057,125 @@ function NovaLib.CreateWindow(cfg)
 		Tab.CreateInfoText = Tab.CreateLabel
 		Tab.CreateParagraph = Tab.CreateLabel
 
+		--// CHAT LOG / SCROLLABLE LOG (fixe Höhe + eigener Scroll)
+		-- Nutzung: local log = Tab:CreateChatLog({Title="Chat", Height=200})
+		--          log:Set("Titel", "langer text...") | log:Add("neue Zeile") | log:Clear()
+		function Tab:CreateChatLog(lcfg)
+			lcfg = lcfg or {}
+			local boxH = lcfg.Height or 200
+			local f = baseContainer(boxH + 46, false)
+			padding(f, 12, 12, 8, 8)
+
+			local t = Instance.new("TextLabel")
+			t.Size = UDim2.new(1, -40, 0, 16)
+			t.BackgroundTransparency = 1
+			t.Font = Enum.Font.GothamBold
+			t.TextSize = 13
+			t.TextXAlignment = Enum.TextXAlignment.Left
+			t.TextColor3 = theme.Text
+			t.TextTruncate = Enum.TextTruncate.AtEnd
+			t.Text = lcfg.Title or "Log"
+			t.Parent = f
+
+			local clearBtn = Instance.new("TextButton")
+			clearBtn.AnchorPoint = Vector2.new(1, 0)
+			clearBtn.Position = UDim2.new(1, 0, 0, 0)
+			clearBtn.Size = UDim2.new(0, 52, 0, 16)
+			clearBtn.BackgroundTransparency = 1
+			clearBtn.Font = Enum.Font.GothamBold
+			clearBtn.TextSize = 11
+			clearBtn.TextColor3 = theme.SubText
+			clearBtn.Text = "Clear"
+			clearBtn.Parent = f
+			clearBtn.MouseEnter:Connect(function() clearBtn.TextColor3 = theme.Text end)
+			clearBtn.MouseLeave:Connect(function() clearBtn.TextColor3 = theme.SubText end)
+
+			local scroller = Instance.new("ScrollingFrame")
+			scroller.Position = UDim2.new(0, 0, 0, 24)
+			scroller.Size = UDim2.new(1, 0, 1, -24)
+			scroller.BackgroundColor3 = theme.Background
+			scroller.BorderSizePixel = 0
+			scroller.ScrollBarThickness = 4
+			scroller.ScrollBarImageColor3 = theme.Accent
+			scroller.ScrollingDirection = Enum.ScrollingDirection.Y
+			scroller.CanvasSize = UDim2.new(0, 0, 0, 0)
+			scroller.AutomaticCanvasSize = Enum.AutomaticSize.Y
+			scroller.Active = true
+			corner(scroller, UDim.new(0, 7))
+			stroke(scroller, theme.Stroke, 1)
+			padding(scroller, 8, 8, 6, 6)
+			scroller.Parent = f
+
+			local body = Instance.new("TextLabel")
+			body.Size = UDim2.new(1, -4, 0, 0)
+			body.AutomaticSize = Enum.AutomaticSize.Y
+			body.BackgroundTransparency = 1
+			body.Font = Enum.Font.Code
+			body.TextSize = 12
+			body.TextXAlignment = Enum.TextXAlignment.Left
+			body.TextYAlignment = Enum.TextYAlignment.Top
+			body.TextColor3 = theme.SubText
+			body.TextWrapped = true
+			body.RichText = false
+			body.Text = lcfg.Description or lcfg.Text or "..."
+			body.Parent = scroller
+
+			local function scrollBottom()
+				task.defer(function()
+					pcall(function()
+						task.wait()
+						scroller.CanvasPosition = Vector2.new(0, math.max(0, scroller.AbsoluteCanvasSize.Y - scroller.AbsoluteWindowSize.Y))
+					end)
+				end)
+			end
+
+			clearBtn.MouseButton1Click:Connect(function()
+				body.Text = "[Keine Nachrichten]"
+				t.Text = lcfg.Title or "Log"
+				scrollBottom()
+				safeCallback(lcfg.OnClear)
+			end)
+
+			task.defer(scrollBottom)
+
+			local api = {}
+			function api:Set(title, desc)
+				if title then
+					local txt = tostring(title)
+					if #txt > 200 then txt = string.sub(txt, 1, 200) end
+					t.Text = txt
+				end
+				if desc ~= nil then
+					local dtxt = tostring(desc)
+					if #dtxt > 12000 then
+						dtxt = "...\n" .. string.sub(dtxt, #dtxt - 12000)
+					end
+					body.Text = dtxt
+					scrollBottom()
+				end
+			end
+			function api:Add(line)
+				local s = tostring(line or "")
+				if body.Text == "[Keine Nachrichten]" or body.Text == "..." then
+					body.Text = s
+				else
+					body.Text = body.Text .. "\n" .. s
+				end
+				if #body.Text > 12000 then
+					body.Text = "...\n" .. string.sub(body.Text, #body.Text - 12000)
+				end
+				scrollBottom()
+			end
+			function api:Clear()
+				body.Text = "[Keine Nachrichten]"
+				scrollBottom()
+			end
+			function api:Get() return t.Text, body.Text end
+			return api
+		end
+		Tab.CreateLog = Tab.CreateChatLog
+		Tab.CreateConsole = Tab.CreateChatLog
+
 		--// BUTTON
 		function Tab:CreateButton(bcfg)
 			if type(bcfg) == "string" then bcfg = {Name = bcfg} end
